@@ -10,17 +10,18 @@
 1. Get the .pdb files and corresponding .fasta files onto DGX from protein data bank
 2. Data cleaning
     - Removing duplicates / Filter similar proteins
+        * Exclude PDB files using following criteria: `Resolution > 2 Angstrom` and `NMR, powder diffraction, neutron diffraction`
     - Identify non-specific cases (binds to both chloride and bromide separately)
     - Identify proteins that have 2+ pockets specific to chloride or bromide
-3. Data pre-processing
+4. Data pre-processing
     - possibly extract features
     - convert .pdb files into pytorch dataloader format
-4. Model development
+5. Model development
     - Based on the data we have, create a model (LLM, GCN)
     - train the model
     - test and evaluate 
     - Scalability
-5. Iteration
+6. Iteration
 
 ## Task 2:
 *build a deep neural network to generate/modify proteins s.t. they can bind to either chloride or bromide*
