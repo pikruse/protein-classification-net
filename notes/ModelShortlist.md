@@ -11,4 +11,23 @@ Since our dataset is smaller than previously anticipated, it is best to use a fo
 
 * The output seems to operate similarly to the ESM model, performing masked protein prediction, which can be done with various types of supervision.
 
-* The in`
+* The input appears similar to a normal PLM (ex: `MdEvVpQpLrVyQdYaKv`), and the `.pdb.` files should have structural information as well.
+
+## 3. [`ESM`](https://huggingface.co/EvolutionaryScale/esm3-sm-open-v1)
+
+* We can fill out an HF license application for this.
+
+* Use instructions come from the [ESM Repository](https://github.com/evolutionaryscale/esm?tab=readme-ov-file#quickstart).
+
+* We've already read this paper, so could be a good start
+
+
+
+# Other Considerations
+* If we don't want to use a pre-trained model, we could venture to make a foundation model ourselves. There is plenty of data out there, but I think that this solution would be rather inefficient.
+
+* For most of these models, we will have to modify the output s.t. we can predict whether our proteins bind to bromide or chloride. We must consider several ways to do this:
+    1. Flatten the last layer and propagate to single node (will return prb. of binding to bromide or chloride)
+    2. Create a token-wise classification output (highlight which region of the protein binds to the atom)
+    3. Other suggestions from the experts
+`
