@@ -23,4 +23,6 @@ class ESMClassifier(nn.Module):
         # self.tokenizer = ESM
         # self.activation = activation
         # self.output_layer = nn.Linear( ,n_out)
+
+        ### output layer will have two neurons, one for occupancy ([0, 1]) and one for the halide ([B, C])
         pass
