@@ -6,23 +6,38 @@ from huggingface_hub import login
 from esm.models.esm3 import ESM3
 from esm.sdk.api import ESM3InferenceClient, ESMProtein, GenerationConfig
 
+class RegressionHead(nn.Module):
+
+    def __init__(self,
+                 n_layers: int = 1,
+                 hidden_dim: int = 512,
+                 ):
+        # figure out what the output of ESM3 is (size, shape, etc.)
+        # define the layers of the regression head
+        pass
+
+    def forward(self, x):
+        pass
+
 class ESMClassifier(nn.Module):
 
     def __init__(self,
                  model_path: str = "esm3_sm_open_v1",
-                 n_out: int = 1,
-                 activation = nn.ReLU,
                  ):
-        """
-        Parameters:
-            model_path (str): path to esm model on huggingface
-            n_out (int): number of output neurons
-        """
-        # self.model_path = model_path
-        # self.model = ESM3.from_pretrained(model_path)
-        # self.tokenizer = ESM
-        # self.activation = activation
-        # self.output_layer = nn.Linear( ,n_out)
+        
+        self.esm = ESM3.from_pretrained(model_path)
+        self.reg_head = RegressionHead()
 
-        ### output layer will have two neurons, one for occupancy ([0, 1]) and one for the halide ([B, C])
-        pass
+    def forward(self, x):
+        # x is our .pdb input
+        seq = x["sequence"]
+        structure = x["structure"]
+        function = x["function"]
+
+        # get output from esm3
+        esm_out = self.esm(seq, structure, function)
+
+        # send it through our custom classifier/regression head
+        reg_out = self.reg_head(esm_out)
+
+        return reg_out
