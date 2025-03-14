@@ -7,7 +7,6 @@ from esm.models.esm3 import ESM3
 from esm.sdk.api import ESM3InferenceClient, ESMProtein, GenerationConfig
 
 class RegressionHead(nn.Module):
-
     def __init__(self,
                  n_layers: int = 1,
                  hidden_dim: int = 512,
