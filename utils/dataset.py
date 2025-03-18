@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from DGXutils import GetFileNames
 
-import esm
+import codebase.projects.proteins.ProteinClassificationNet.utils.model as model
 from esm.utils.structure.protein_chain import ProteinChain
 from esm.models.esm3 import ESM3
 from esm.sdk import client

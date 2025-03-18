@@ -6,6 +6,39 @@ from huggingface_hub import login
 from esm.models.esm3 import ESM3
 from esm.sdk.api import ESM3InferenceClient, ESMProtein, GenerationConfig
 
+# ----------------  
+## MHT TRANSFORMER
+# ----------------
+class Block(nn.Module):
+    """
+    FC block with linear + bn + dropout + activation
+    """
+    def __init__(self,)
+
+class MHTTransformer(nn.Module):
+
+    def __init__(self,
+                 n_layers,
+                 hidden_dim,
+                 out_dim,
+                 n_heads,):
+        super(MHTTransformer, self).__init__()
+
+        # get hyperparameters
+        self.n_layers = n_layers
+        self.hidden_dim = hidden_dim
+        self.out_dim = out_dim
+        self.n_heads = n_heads
+
+        # make layers
+
+    # fwd pass
+    def forward(self, x):
+        pass
+
+# --------------
+## ESM FINE-TUNE
+# --------------
 class RegressionHead(nn.Module):
     def __init__(self,
                  n_layers: int = 1,
